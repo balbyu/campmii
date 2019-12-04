@@ -23,7 +23,15 @@ const express = require("express"),
     commentRoutes = require("./routes/commentRoute"),
     campgroundRoutes = require("./routes/campgroundRoute");
 
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOATLAS_URI, {
+     useNewUrlParser: true,
+      useUnifiedTopology: true })
+      .then(() => {
+          console.log("Connected to DB!");
+      })
+      .catch(err => {
+          console.log("ERROR:", err.message);
+      });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(express.static(__dirname + "/public"));
