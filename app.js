@@ -22,7 +22,15 @@ const express = require("express"),
     commentRoutes = require("./routes/commentRoute"),
     campgroundRoutes = require("./routes/campgroundRoute");
 
-mongoose.connect(process.env.MONGOATLAS_URI, {useNewUrlParser: true});
+// assign mongoose promise library and connect to database
+mongoose.Promise = global.Promise;
+
+const databaseUri = process.env.MONGOATLAS_URI || 'mongodb://localhost/yelp_camp';
+
+mongoose.connect(databaseUri, { useMongoClient: true })
+      .then(() => console.log(`Database connected`))
+      .catch(err => console.log(`Database connection error: ${err.message}`));
+      
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(express.static(__dirname + "/public"));
