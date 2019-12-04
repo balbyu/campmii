@@ -65,6 +65,6 @@ app.use(indexRoutes);
 app.use(commentRoutes);
 app.use(campgroundRoutes);
 
-app.listen(port, () => {
-    console.log(`YelpCamp server has started on port ${port}`);
+app.listen(process.env.PORT, process.env.IP, () => {
+    console.log(`YelpCamp server has started on IP ${process.env.IP} with port ${process.env.PORT}`);
 })
