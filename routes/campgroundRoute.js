@@ -22,7 +22,7 @@ router.get("/campgrounds", (req, res) => {
     // Get all campgrounds from DB
     Campground.find({}, function (err, allCampgrounds) {
         if (err) {
-            console.log(err);
+            console.log("Error getting to campgrounds index", err.message);
         }
         else {
             // Send campgrounds to the .ejs file under var "campgrounds"

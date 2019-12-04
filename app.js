@@ -5,7 +5,6 @@
  * importation, and execution of our YelpCamp app.
  */
 
-let port = 3000;
 
 const express = require("express"),
     mongoose = require("mongoose"),
@@ -66,5 +65,5 @@ app.use(commentRoutes);
 app.use(campgroundRoutes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
-    console.log(`YelpCamp server has started on IP ${process.env.IP} with port ${process.env.PORT}`);
+    console.log("YelpCamp has booted up!");
 })
