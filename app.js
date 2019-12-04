@@ -22,7 +22,7 @@ const express = require("express"),
     commentRoutes = require("./routes/commentRoute"),
     campgroundRoutes = require("./routes/campgroundRoute");
 
-mongoose.connect(process.env.MONGOATLAS_URI, {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOATLAS_URI, {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(express.static(__dirname + "/public"));
