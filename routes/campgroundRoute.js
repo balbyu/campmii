@@ -8,6 +8,7 @@
  *  - Shows Individual Campground
  */
 
+
 const express = require("express"),
     router = express.Router(),
     middleware = require("../middleware/index"),
