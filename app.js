@@ -2,7 +2,7 @@
  * App.js
  * 
  * This is our entry into the YelCamp Node appliaction. It handles the initial setup,
- * importation, and execution of our YelpCamp app.
+ * importation, and execution of our CampMii app.
  */
 
 
@@ -72,5 +72,5 @@ app.use(commentRoutes);
 app.use(campgroundRoutes);
 
 app.listen(port, process.env.IP, () => {
-    console.log(`YelpCamp has booted up on port ${port}`);
+    console.log(`CampMii has booted up on port ${port}`);
 })
