@@ -28,7 +28,7 @@ env.config();
 // assign mongoose promise library and connect to database
 mongoose.Promise = global.Promise;
 
-const databaseUri = process.env.MONGOATLAS_URI || env.MONGOATLAS_URI;
+const databaseUri = process.env.MONGOATLAS_URI || 'mongodb://localhost/camp-mii';
 const port = process.env.PORT || 3000;
 
 
@@ -65,6 +65,10 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     next();
 })
+
+// Setup Moment for time stamps
+app.locals.moment = require('moment');
+
 
 // Let express use our routes that we've imported above.
 app.use(indexRoutes);
