@@ -1,24 +1,81 @@
+#navbarIcon{
+    margin: 0;
+    padding-top: 8px;
+}
+
+#special{
+    color: black;
+    margin: 0;
+}
+
+#collapsedButton{
+    border: none;
+    background-color: white;
+}
+
+.navbar {
+    background:transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#bs-example-navbar-collapse-1{
+    background:transparent;
+    border: none;
+    box-shadow: none;
+}
+
 .thumbnail img {
     width: 100%;
 }
 
-.thumbnail{
+.thumbnail {
     padding: 0;
 }
 
-.thumbnail .caption-full{
+.thumbnail .caption-full {
     padding: 9px;
 }
 
-#delete-campground-form{
+#delete-campground-form {
     display: inline;
 }
 
-#delete-comment-form{
+#delete-comment-form {
     display: inline;
 }
 
 #delete-comment-button {
-    background:none!important;
-    border:none; 
+    background: none!important;
+    border: none;
+}
+
+body {
+    background: #11998e;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #38ef7d, #11998e);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.thumbnail {
+    border: 0 none;
+    box-shadow: none;
+}
+
+#indexJumbo{
+    background: #9fffc781;
+    box-shadow: 5px 5px 20px #00000027;
+}
+
+#signedIn{
+    color: #9fffc781;
+    padding-top: 1.5em;
+    transition: color 1s ease;
+}
+
+#signedIn:hover{
+    color: white;
+    
 }
