@@ -20,14 +20,21 @@ const express = require("express"),
     Comment = require("./models/comment"),
     indexRoutes = require("./routes/indexRoute"),
     commentRoutes = require("./routes/commentRoute"),
-    campgroundRoutes = require("./routes/campgroundRoute");
+    campgroundRoutes = require("./routes/campgroundRoute"),
+    env = require('dotenv');
+
+env.config();
 
 // assign mongoose promise library and connect to database
 mongoose.Promise = global.Promise;
 
-const databaseUri = process.env.MONGOATLAS_URI || 'mongodb://localhost/yelp_camp';
+const databaseUri = process.env.MONGOATLAS_URI || env.MONGOATLAS_URI;
+const port = process.env.PORT || 3000;
 
-mongoose.connect(databaseUri, { useMongoClient: true })
+
+mongoose.connect(databaseUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
       
@@ -64,6 +71,6 @@ app.use(indexRoutes);
 app.use(commentRoutes);
 app.use(campgroundRoutes);
 
-app.listen(process.env.PORT, process.env.IP, () => {
-    console.log("YelpCamp has booted up!");
+app.listen(port, process.env.IP, () => {
+    console.log(`YelpCamp has booted up on port ${port}`);
 })
