@@ -1,5 +1,4 @@
-# CampMii
-
+# CampMii 🏕
 CampMii is a website to share and comment on your favorite campgrounds. It's the final code-along project in the Udemy Web Developer Bootcamp, and as such is lacking many features that I think could make this actually useful. Therefore I decided to continue developing this into something that I was proud of enough to share.
 
 Enjoy!
