@@ -16,7 +16,7 @@ User = require("../models/user");
 module.exports = router;
 
 /**
- * Landing page for YelpCamp
+ * Landing page for CampMii
  */
 router.get("/", (req, res) => {
     res.render("landing")
@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
             return res.render("register")
         }
         passport.authenticate("local")(req, res, () => {
-            req.flash("success", "Welcome to YelpCamp " + user.username);
+            req.flash("success", "Welcome to CampMii " + user.username);
             res.redirect("/campgrounds")
         })
     });

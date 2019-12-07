@@ -1,7 +1,7 @@
 /**
  * Index.js
  * 
- * This file serves up all the middleware functions that we use throughout the YelpCamp workflow. It's 
+ * This file serves up all the middleware functions that we use throughout the CampMii workflow. It's 
  * mainly used authorization and authentication, but could include other middleware in the future.
  */
 

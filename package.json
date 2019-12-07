@@ -1,7 +1,7 @@
 {
-  "name": "yelpcamp",
+  "name": "campmii",
   "version": "1.0.0",
-  "description": "YelpCamp is the final code-along project in the Udemy Web Developer Bootcamp. This project will contain many new features that I have been wanting to add since the beginning.",
+  "description": "CampMii is the final code-along project in the Udemy Web Developer Bootcamp. This project will contain many new features that I have been wanting to add since the beginning.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

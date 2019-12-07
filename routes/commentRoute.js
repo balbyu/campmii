@@ -1,7 +1,7 @@
 /**
  * commentRoute.js
  * 
- * This class represents the comment route that handles misc comment functionality in YelpCamp.
+ * This class represents the comment route that handles misc comment functionality in CampMii.
  * 
  *  - New Comment Form
  *  - Post New Comment
