@@ -12,6 +12,7 @@
                 Info 3
             </li>
         </div>
+        <div id="map"></div>
     </div>
     <div class="col-md-8">
         <div class="thumbnail">
@@ -63,4 +64,37 @@
         </div>
     </div>
 </div>
+<script>
+    function initMap() {
+        
+        let lat = <%= campground.lat %>;
+        let lon = <%= campground.lon %>;
+
+        var center = { lat: lat, lng: lon };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: center,
+            scrollwheel: false
+        });
+        var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var marker = new google.maps.Marker({
+            position: center,
+            map: map
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtkH9xxYUP57oVvC-yoAZn29-ld8Ricps&callback=initMap"
+    type="text/javascript"></script>
+
 <%- include('../partials/footer') %>
