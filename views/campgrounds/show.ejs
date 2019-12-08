@@ -70,21 +70,21 @@
         let lat = <%= campground.lat %>;
         let lon = <%= campground.lon %>;
 
-        var center = { lat: lat, lng: lon };
-        var map = new google.maps.Map(document.getElementById('map'), {
+        const center = { lat: lat, lng: lon };
+        const map = new google.maps.Map(document.getElementById('map'), {
             zoom: 8,
             center: center,
             scrollwheel: false
         });
-        var contentString = `
+        const contentString = `
       <strong><%= campground.name %><br />
       <%= campground.location %></strong>
       <p><%= campground.description %></p>
     `
-        var infowindow = new google.maps.InfoWindow({
+        const infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-        var marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: center,
             map: map
         });
