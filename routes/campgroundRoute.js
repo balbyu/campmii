@@ -137,8 +137,8 @@ router.get("/campgrounds/:id/edit", middleware.isCampgroundOwner, (req, res) => 
 * Update Campground - Puts the updated campground information into DB
 */
 
-router.put("/:id", middleware.isCampgroundOwner, (req, res) => {
-    geocoder.geocode(req.body.location, (err, data) => {
+router.put("/campgrounds/:id", middleware.isCampgroundOwner, (req, res) => {
+    geocoder.geocode(req.body.campground.location, (err, data) => {
         if (err || !data.length) {
             req.flash('error', 'Invalid address');
             return res.redirect('back');

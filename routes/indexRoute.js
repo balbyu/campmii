@@ -19,7 +19,7 @@ module.exports = router;
  * Landing page for CampMii
  */
 router.get("/", (req, res) => {
-    res.render("landing")
+    res.redirect("/campgrounds")
 })
 
 /**
