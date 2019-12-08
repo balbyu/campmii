@@ -64,7 +64,7 @@ router.post("/campgrounds", middleware.isLoggedIn, (req, res) => {
         desc = req.body.description,
         author = { d: req.user._id, username: req.user.username }
 
-    geocoder.geocode(req.body.location, err, data => {
+    geocoder.geocode(req.body.location, (err, data) => {
         if (err || !data.length) {
             console.log(err);
             req.flash('error', 'Invalid address');
