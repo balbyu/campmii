@@ -62,7 +62,10 @@ router.post("/campgrounds", middleware.isLoggedIn, (req, res) => {
         image = req.body.image,
         cost = req.body.cost,
         desc = req.body.description,
-        author = { d: req.user._id, username: req.user.username }
+        author = {
+            id: req.user._id,
+            username: req.user.username
+        };
 
     geocoder.geocode(req.body.location, (err, data) => {
         if (err || !data.length) {
