@@ -8,13 +8,31 @@
  *  - Shows Individual Campground
  */
 
-
 const express = require("express"),
     router = express.Router(),
     middleware = require("../middleware/index"),
-    Campground = require("../models/campground");
+    Campground = require("../models/campground"),
+    NodeGeocoder = require('node-geocoder'),
+    dotenv = require("dotenv");
 
 module.exports = router;
+
+/**
+ * Run dotenv config again. For some reason this class gets built first
+ *  and we don't have the env setup.
+ */
+
+dotenv.config();
+
+
+const options = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: process.env.GEOCODER_API_KEY,
+    formatter: null
+};
+
+const geocoder = NodeGeocoder(options);
 
 /**
  * Index route - Shows all campgrounds in the DB.
@@ -39,26 +57,45 @@ router.get("/campgrounds", (req, res) => {
  * Post New Campground - posts a new campground to the DB
  */
 router.post("/campgrounds", middleware.isLoggedIn, (req, res) => {
-    // Get data from form and add to campgrounds array
-    let name = req.body.name,
+    // get data from form and add to campgrounds array
+    const name = req.body.name,
         image = req.body.image,
         cost = req.body.cost,
-        description = req.body.description,
-        author = {
-            id: req.user._id,
-            username: req.user.username
-        }
-    newCampground = { name: name, image: image, cost: cost, description: description, author: author };
+        desc = req.body.description,
+        author = { d: req.user._id, username: req.user.username }
 
-    // Create new campground in DB
-    Campground.create(newCampground, (err, campground) => {
-        if (err) {
+    geocoder.geocode(req.body.location, err, data => {
+        if (err || !data.length) {
             console.log(err);
-        } else {
-            res.redirect("/campgrounds")
+            req.flash('error', 'Invalid address');
+            return res.redirect('back');
         }
-    }
-    )
+
+        const lat = data[0].latitude,
+            lon = data[0].longitude,
+            location = data[0].formattedAddress,
+            newCampground =
+            {
+                name: name,
+                image: image,
+                description: desc,
+                cost: cost,
+                author: author,
+                location: location,
+                lat: lat,
+                lon: lon
+            };
+        // Create a new campground and save to DB
+        Campground.create(newCampground, function (err, newlyCreated) {
+            if (err) {
+                console.log(err);
+            } else {
+                //redirect back to campgrounds page
+                console.log(newlyCreated);
+                res.redirect("/campgrounds");
+            }
+        });
+    });
 })
 
 /**
@@ -96,16 +133,28 @@ router.get("/campgrounds/:id/edit", middleware.isCampgroundOwner, (req, res) => 
 /**
 * Update Campground - Puts the updated campground information into DB
 */
-router.put("/campgrounds/:id", middleware.isCampgroundOwner, (req, res) => {
-    // Find and update campground
-    Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
-        if (err) {
-            res.redirect("/campgrounds");
-        } else {
-            res.redirect("/campgrounds/" + req.params.id);
+
+router.put("/:id", middleware.isCampgroundOwner, (req, res) => {
+    geocoder.geocode(req.body.location, (err, data) => {
+        if (err || !data.length) {
+            req.flash('error', 'Invalid address');
+            return res.redirect('back');
         }
-    })
-})
+        req.body.campground.lat = data[0].latitude;
+        req.body.campground.lon = data[0].longitude;
+        req.body.campground.location = data[0].formattedAddress;
+
+        Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, campground) {
+            if (err) {
+                req.flash("error", err.message);
+                res.redirect("back");
+            } else {
+                req.flash("success", "Successfully Updated!");
+                res.redirect("/campgrounds/" + campground._id);
+            }
+        });
+    });
+});
 
 /**
 * Destroy Campground - Deletes a certain campground from the DB

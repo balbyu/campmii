@@ -21,16 +21,14 @@ const express = require("express"),
     indexRoutes = require("./routes/indexRoute"),
     commentRoutes = require("./routes/commentRoute"),
     campgroundRoutes = require("./routes/campgroundRoute"),
-    env = require('dotenv');
-
-env.config();
-
+    dotenv = require("dotenv");
+    
+dotenv.config();
 // assign mongoose promise library and connect to database
 mongoose.Promise = global.Promise;
 
 const databaseUri = process.env.MONGOATLAS_URI || 'mongodb://localhost/camp-mii';
 const port = process.env.PORT || 3000;
-
 
 mongoose.connect(databaseUri, {
     useNewUrlParser: true,
@@ -68,7 +66,6 @@ app.use((req, res, next) => {
 
 // Setup Moment for time stamps
 app.locals.moment = require('moment');
-
 
 // Let express use our routes that we've imported above.
 app.use(indexRoutes);
