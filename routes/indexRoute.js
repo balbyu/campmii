@@ -10,9 +10,10 @@
  */
 
 const express = require("express"),
-router = express.Router(),
-passport = require("passport"),
-User = require("../models/user");
+    router = express.Router(),
+    passport = require("passport"),
+    User = require("../models/user");
+
 module.exports = router;
 
 /**
@@ -23,21 +24,14 @@ router.get("/", (req, res) => {
 })
 
 /**
- * Show Registration Form - Shows the registration form for a new user.
- */
-router.get("/register", (req, res) => {
-    res.render("register");
-})
-
-/**
  * Handle Signup Form - Handles the post request for when a user registers a new account.
  */
 router.post("/register", (req, res) => {
     let newUser = new User({ username: req.body.username });
     User.register(newUser, req.body.password, (err, user) => {
-        if(err){
-            console.log(err);
-            return res.render("register", {error: err.message});
+        if (err) {
+            req.flash("error", err.message);
+            res.redirect("/campgrounds")
         }
         passport.authenticate("local")(req, res, () => {
             req.flash("success", "Welcome to CampMii " + user.username);
@@ -47,21 +41,15 @@ router.post("/register", (req, res) => {
 })
 
 /**
- * Show Login Form - Shows the login form to the user.
- */
-router.get("/login", (req, res) => {
-    res.render("login");
-})
-
-/**
  * Handle Login Form - Handles the authentication of the login form and redirects to appropriate
  * route.
  */
 router.post("/login", passport.authenticate("local",
     {
         successRedirect: "/campgrounds",
-        failureRedirect: "/login"
+        failureRedirect: "/loginfailed",
     }));
+
 
 /**
  * Handle Logout - Includes the lsogic for when user logs out of their account.
@@ -71,3 +59,10 @@ router.get("/logout", (req, res) => {
     req.flash("success", "Logged Out!");
     res.redirect("/campgrounds");
 })
+
+//Route to login page if user failed to login. I created this to allow flash messages and not interfere with regular login route
+router.get("/loginfailed", (req, res) => {
+
+    req.flash("error", "Invalid username or password");
+    res.redirect("/campgrounds");
+});
