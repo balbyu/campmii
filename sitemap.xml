@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>http://www.campmii.com/campgrounds</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5dec5e3a8476190017899092</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5ded101ca0d8100017a1d44b</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5ded10c5a0d8100017a1d44c</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5ded18680f2b64001719e028</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5ded19250f2b64001719e02d</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.campmii.com/campgrounds/5ded1a7b0f2b64001719e02e</loc>
+  <lastmod>2019-12-12T13:51:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
