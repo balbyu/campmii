@@ -6,7 +6,7 @@ html, body {
     overflow-x: hidden;
 }
 
-body {
+body, footer {
     background: #11998e;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
