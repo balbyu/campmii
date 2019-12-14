@@ -1,9 +1,9 @@
-html,body
-{
+html, body {
     width: 100%;
+    height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 body {
@@ -16,29 +16,39 @@ body {
     background-repeat: no-repeat;
 }
 
-#navbarIcon{
+textarea{
+    resize: vertical;
+}
+
+footer{
+    margin-top: 3em;
+    padding: 1em;
+    text-align: center;
+}
+
+#navbarIcon {
     margin: 0;
     padding-top: 8px;
 }
 
-#special{
+#special {
     color: black;
     margin: 0;
 }
 
-#collapsedButton{
+#collapsedButton {
     border: none;
     background-color: white;
 }
 
 .navbar {
-    background:transparent;
+    background: transparent;
     border: none;
     box-shadow: none;
 }
 
-#bs-example-navbar-collapse-1{
-    background:transparent;
+#bs-example-navbar-collapse-1 {
+    background: transparent;
     border: none;
     box-shadow: none;
 }
@@ -75,24 +85,23 @@ body {
     width: 100%;
 }
 
-#more-info-button{
+#more-info-button {
     margin: 0.5em;
 }
 
-#indexJumbo{
+#indexJumbo {
     background: #9fffc781;
     box-shadow: 5px 5px 20px #00000027;
 }
 
-#signedIn{
+#signedIn {
     color: #9fffc781;
     padding-top: 1.5em;
     transition: color 1s ease;
 }
 
-#signedIn:hover{
+#signedIn:hover {
     color: white;
-    
 }
 
 #map {
@@ -101,7 +110,40 @@ body {
     border-radius: 0.5em;
 }
 
-.well{
-    border-radius: 0.5em 1em ;
+.well {
+    border-radius: 0.5em 1em;
 }
 
+#dollar {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.creatNewHeader, .editCommentForm, .editCampground {
+    text-align: center;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 0, 0, 0.041);
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+
+
+.description {
+    white-space: pre-line;
+}
+
+#comment{
+    border-top: 0.5px solid;
+    border-color: rgba(0, 0, 0, 0.158);
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+#commentText{
+    padding-top: 1em;
+}
+
+#editRemoveComment{
+    padding-top: 1em;
+}

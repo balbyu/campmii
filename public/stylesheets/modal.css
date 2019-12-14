@@ -10,9 +10,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
-body {
-    line-height: 1;
-}
 ol, ul {
     list-style: none;
 }
@@ -35,10 +32,7 @@ table {
 Primary style
 
 -------------------------------- */
-html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
