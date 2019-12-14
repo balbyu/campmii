@@ -145,5 +145,10 @@ footer{
 }
 
 #editRemoveComment{
-    padding-top: 1em;
+    padding-top:
+     1em;
+}
+
+#pagination{
+    padding-top: 3em;
 }

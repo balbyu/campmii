@@ -38,18 +38,26 @@ const geocoder = NodeGeocoder(options);
  * Index route - Shows all campgrounds in the DB.
  */
 router.get("/campgrounds", (req, res) => {
+
+    // Configure page count. Figure out how many pages we have and what number we're on.
+    let perPage = 6;
+    let pageQuery = parseInt(req.query.page);
+    let pageNumber = pageQuery ? pageQuery : 1;
+
     // Get all campgrounds from DB
-    Campground.find({}, function (err, allCampgrounds) {
-        if (err) {
-            console.log("Error getting to campgrounds index", err.message);
-        }
-        else {
-            // Send campgrounds to the .ejs file under var "campgrounds"
-            res.render("campgrounds/index",
-                {
-                    campgrounds: allCampgrounds
+    Campground.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allCampgrounds) {
+
+        Campground.count().exec(function (err, count) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("campgrounds/index", {
+                    campgrounds: allCampgrounds,
+                    current: pageNumber,
+                    pages: Math.ceil(count / perPage)
                 });
-        }
+            }
+        });
     })
 })
 
@@ -93,9 +101,8 @@ router.post("/campgrounds", middleware.isLoggedIn, (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                //redirect back to campgrounds page
-                console.log(newlyCreated);
-                res.redirect("/campgrounds");
+                //Redirect to new campground
+                res.redirect("/campgrounds/" + newlyCreated._id);
             }
         });
     });
