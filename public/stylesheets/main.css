@@ -120,7 +120,7 @@ footer{
     text-align: center;
 }
 
-.creatNewHeader, .editCommentForm, .editCampground {
+.creatNewHeader, .editCommentForm, .editCampground, .newCommentForm {
     text-align: center;
     border-bottom: 1px solid;
     border-color: rgba(0, 0, 0, 0.041);
