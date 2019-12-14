@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body, footer {
@@ -138,6 +138,7 @@ footer{
     border-color: rgba(0, 0, 0, 0.158);
     padding-top: 2em;
     padding-bottom: 1em;
+    margin-top: 1em;
 }
 
 #commentText{
