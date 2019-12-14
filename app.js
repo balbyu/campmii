@@ -41,7 +41,6 @@ app.use(flash());
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-// seedDatabase();
 
 // Passport Config
 app.use(require("express-session")({

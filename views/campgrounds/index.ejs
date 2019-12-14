@@ -19,18 +19,20 @@
 
 <div class="row">
     <% campgrounds.forEach((campground) => { %>
-    <div class="col-md-4 col-sm-6">
-        <div class="thumbnail">
-            <img src="<%= campground.image %>">
-            <div class="caption">
-                <h4><%= campground.name %></h4>
+    <a id="indexCard" href="/campgrounds/<%= campground._id %>">
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail zoom">
+                <img src="<%= campground.image %>">
+                <div class="caption">
+                    <h4><%= campground.name %></h4>
+                </div>
+                <p>
+                    <a href="/campgrounds/<%= campground._id %>" id="more-info-button" class="btn btn-info">More
+                        Info</a>
+                </p>
             </div>
-            <p>
-                <a href="/campgrounds/<%= campground._id %>" id="more-info-button" class="btn btn-info">More Info</a>
-            </p>
         </div>
-    </div>
-
+    </a>
     <% }); %>
 </div>
 

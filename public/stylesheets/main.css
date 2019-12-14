@@ -16,11 +16,11 @@ body, footer {
     background-repeat: no-repeat;
 }
 
-textarea{
+textarea {
     resize: vertical;
 }
 
-footer{
+footer {
     margin-top: 3em;
     padding: 1em;
     text-align: center;
@@ -128,12 +128,11 @@ footer{
     padding-bottom: 1em;
 }
 
-
 .description {
     white-space: pre-line;
 }
 
-#comment{
+#comment {
     border-top: 0.5px solid;
     border-color: rgba(0, 0, 0, 0.158);
     padding-top: 2em;
@@ -141,15 +140,28 @@ footer{
     margin-top: 1em;
 }
 
-#commentText{
+#commentText {
     padding-top: 1em;
 }
 
-#editRemoveComment{
-    padding-top:
-     1em;
+#editRemoveComment {
+    padding-top: 1em;
 }
 
-#pagination{
+#pagination {
     padding-top: 3em;
+}
+
+.zoom {
+    transition: transform .2s;
+    /* Animation */
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+    transition-timing-function: ease-out, cubic-bezier(.82, .1, .14, 1.12);
+}
+
+#indexCard {
+    text-decoration: none;
 }
