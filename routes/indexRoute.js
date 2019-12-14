@@ -31,11 +31,11 @@ router.post("/register", (req, res) => {
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
             req.flash("error", err.message);
-            res.redirect("/campgrounds")
+            res.redirect("back")
         }
         passport.authenticate("local")(req, res, () => {
             req.flash("success", "Welcome to CampMii " + user.username);
-            res.redirect("/campgrounds")
+            res.redirect("back")
         })
     });
 })
@@ -46,7 +46,7 @@ router.post("/register", (req, res) => {
  */
 router.post("/login", passport.authenticate("local",
     {
-        successRedirect: "/campgrounds",
+        successRedirect: "back",
         failureRedirect: "/loginfailed",
     }));
 
@@ -57,7 +57,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", (req, res) => {
     req.logout();
     req.flash("success", "Logged Out!");
-    res.redirect("/campgrounds");
+    res.redirect("back");
 })
 
 //Route to login page if user failed to login. I created this to allow flash messages and not interfere with regular login route
