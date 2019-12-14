@@ -1,12 +1,12 @@
 html, body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
 }
 
-body {
+body, footer {
     background: #11998e;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
@@ -120,7 +120,7 @@ footer{
     text-align: center;
 }
 
-.creatNewHeader, .editCommentForm, .editCampground {
+.creatNewHeader, .editCommentForm, .editCampground, .newCommentForm {
     text-align: center;
     border-bottom: 1px solid;
     border-color: rgba(0, 0, 0, 0.041);
@@ -138,6 +138,7 @@ footer{
     border-color: rgba(0, 0, 0, 0.158);
     padding-top: 2em;
     padding-bottom: 1em;
+    margin-top: 1em;
 }
 
 #commentText{
