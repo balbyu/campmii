@@ -1,6 +1,4 @@
-### ![Brand](https://www.shareicon.net/data/128x128/2016/04/24/754751_nature_512x512.png)
-
-# Campmii 
+# Campmii   <img src="https://www.shareicon.net/data/128x128/2016/04/24/754751_nature_512x512.png" width="30"> 
 Campmii is a website to share and comment on your favorite campgrounds. It's the final code-along project in the Udemy Web Developer Bootcamp (called YelpCamp), and as such is lacking many features that I think could make this actually useful. Therefore I decided to continue developing this into something that I was proud of enough to share.
 
 Enjoy!
