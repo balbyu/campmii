@@ -1,61 +1,87 @@
 <%- include('../partials/header') %>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtkH9xxYUP57oVvC-yoAZn29-ld8Ricps&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtkH9xxYUP57oVvC-yoAZn29-ld8Ricps&libraries=places"></script>
 
 <script>
-    $(document).ready(() => {
+  $(document).ready(() => {
+    const autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById("locationSearchNew"),
+      {
+        types: ["geocode"]
+      }
+    );
 
-        const autocomplete = new google.maps.places.Autocomplete(document.getElementById("locationSearchNew"), {
-            types: ['geocode']
-        });
-
-        google.maps.event.addListener(autocomplete, 'place_changed', () => {
-            var near_place = autocomplete.getPlace();
-
-        });
+    google.maps.event.addListener(autocomplete, "place_changed", () => {
+      var near_place = autocomplete.getPlace();
     });
-
+  });
 </script>
 
 <div class="row">
-    <h1 class="creatNewHeader" >Create a New Campground</h1>
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-        <form action="/campgrounds" method="POST" autocomplete="off">
-            <div class="row">
-                <div class="form-group col-xs-9">
-                    <input class="form-control" type="text" name="name" placeholder="name">
-                </div>
-                <div class="form-group col-xs-3">
-                    <div class="row">
-                        <div id="dollar" class="col-xs-1">
-                           <i class=" h4 fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="col-xs-11">
-                            <input class="form-control" type="number" name="cost" placeholder="cost" step="0.01" min="0"
-                                required>
-                        </div>
-                    </div>
-                </div>
+  <h1 class="creatNewHeader">Create a New Campground</h1>
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <form action="/campgrounds" method="POST" autocomplete="off">
+      <div class="row">
+        <div class="form-group col-xs-9">
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="name"
+          />
+        </div>
+        <div class="form-group col-xs-3">
+          <div class="row">
+            <div id="dollar" class="col-xs-1">
+              <i class=" h4 fas fa-dollar-sign"></i>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="image" placeholder="img url">
+            <div class="col-xs-11">
+              <input
+                class="form-control"
+                type="number"
+                name="cost"
+                placeholder="cost"
+                step="0.01"
+                min="0"
+                required
+              />
             </div>
-            <div class="form-group">
-                <input id="locationSearchNew" class="form-control" type="text" name="location" placeholder="location">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control rounded-0" rows="5" type="text" name="description"
-                    placeholder="description"></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-            </div>
-        </form>
-        <a href="javascript:history.back()">Go Back</a>
-    </div>
-    <div class="col-lg-3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="text"
+          name="image"
+          placeholder="img url"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          id="locationSearchNew"
+          class="form-control"
+          type="text"
+          name="location"
+          placeholder="location"
+        />
+      </div>
+      <div class="form-group">
+        <textarea
+          class="form-control rounded-0"
+          rows="5"
+          type="text"
+          name="description"
+          placeholder="description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+      </div>
+    </form>
+    <a href="javascript:history.back()">Go Back</a>
+  </div>
+  <div class="col-lg-3"></div>
 </div>
-
 
 <%- include('../partials/footer') %>

@@ -1,62 +1,98 @@
 <%- include('../partials/header') %>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtkH9xxYUP57oVvC-yoAZn29-ld8Ricps&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtkH9xxYUP57oVvC-yoAZn29-ld8Ricps&libraries=places"></script>
 
 <script>
-    $(document).ready(() => {
+  $(document).ready(() => {
+    const autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById("locationSearchEdit"),
+      {
+        types: ["geocode"]
+      }
+    );
 
-        const autocomplete = new google.maps.places.Autocomplete(document.getElementById("locationSearchEdit"), {
-            types: ['geocode']
-        });
-
-        google.maps.event.addListener(autocomplete, 'place_changed', () => {
-            var near_place = autocomplete.getPlace();
-
-        });
+    google.maps.event.addListener(autocomplete, "place_changed", () => {
+      var near_place = autocomplete.getPlace();
     });
-
+  });
 </script>
 
 <div class="row">
-    <h1 class="editCampground">Edit Campground</h1>
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-        <form action="/campgrounds/<%= campground._id%>/?_method=PUT" method="POST" autocomplete="off">
-            <div class="row">
-                <div class="form-group col-xs-9">
-                    <input class="form-control" placeholder="name" type="text" name="campground[name]"
-                        value="<%= campground.name %>">
-                </div>
-                <div class="form-group col-xs-3">
-                    <div class="row">
-                        <div id="dollar" class="col-xs-1">
-                            <i class=" h4 fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="col-xs-11">
-                            <input class="form-control" placeholder="Cost Per Night (USD)" type="number"
-                                name="campground[cost]" value="<%= campground.cost %>" step="0.01" min="0" required>
-                        </div>
-                    </div>
-                </div>
+  <h1 class="editCampground">Edit Campground</h1>
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <form
+      action="/campgrounds/<%= campground._id%>/?_method=PUT"
+      method="POST"
+      autocomplete="off"
+    >
+      <div class="row">
+        <div class="form-group col-xs-9">
+          <input
+            class="form-control"
+            placeholder="name"
+            type="text"
+            name="campground[name]"
+            value="<%= campground.name %>"
+          />
+        </div>
+        <div class="form-group col-xs-3">
+          <div class="row">
+            <div id="dollar" class="col-xs-1">
+              <i class=" h4 fas fa-dollar-sign"></i>
             </div>
-            <div class="form-group">
-                <input class="form-control" placeholder="image url" type="text" name="campground[image]"
-                    value="<%=campground.image%>">
+            <div class="col-xs-11">
+              <input
+                class="form-control"
+                placeholder="Cost Per Night (USD)"
+                type="number"
+                name="campground[cost]"
+                value="<%= campground.cost %>"
+                step="0.01"
+                min="0"
+                required
+              />
             </div>
-            <div class="form-group">
-                    <input id="locationSearchEdit" class="form-control" type="text" name="campground[location]" id="location" placeholder="location"
-                        value="<%=campground.location%>">
-                </div>
-            <div class="form-group">
-                <textarea class="form-control rounded-0"  rows="5" placeholder="description" type="text" name="campground[description]"><%=campground.description%></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Save</button>
-            </div>
-        </form>
-        <a href="javascript:history.back()">Go Back</a>
-    </div>
-    <div class="col-lg-3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          placeholder="image url"
+          type="text"
+          name="campground[image]"
+          value="<%=campground.image%>"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          id="locationSearchEdit"
+          class="form-control"
+          type="text"
+          name="campground[location]"
+          id="location"
+          placeholder="location"
+          value="<%=campground.location%>"
+        />
+      </div>
+      <div class="form-group">
+        <textarea
+          class="form-control rounded-0"
+          rows="5"
+          placeholder="description"
+          type="text"
+          name="campground[description]"
+        >
+<%=campground.description%></textarea
+        >
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Save</button>
+      </div>
+    </form>
+    <a href="javascript:history.back()">Go Back</a>
+  </div>
+  <div class="col-lg-3"></div>
 </div>
 
 <%- include('../partials/footer') %>

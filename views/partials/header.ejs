@@ -1,169 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Meta Information -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Russell Boone">
-    <meta name="description" content="CampMii provides users with a platform to share and comment
-    on their favorite Campgrounds. Create a free account and submit your own campground today!">
-    <meta name="google-site-verification" content="gc-AR0j3dMiZn6XIRFE9n84VUvpkamjvR9eL5PUk9to" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Russell Boone" />
+    <meta
+      name="description"
+      content="CampMii provides users with a platform to share and comment
+    on their favorite Campgrounds. Create a free account and submit your own campground today!"
+    />
+    <meta
+      name="google-site-verification"
+      content="gc-AR0j3dMiZn6XIRFE9n84VUvpkamjvR9eL5PUk9to"
+    />
 
     <!-- Title -->
     <title>CampMii</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149654227-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-149654227-1"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'UA-149654227-1');
+      gtag("config", "UA-149654227-1");
     </script>
 
     <!-- Links to Stylesheets and Icon -->
-    <link rel="icon" href="/assets/brand.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" href="/stylesheets/modal.css">
+    <link rel="icon" href="/assets/brand.png" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/modal.css" />
 
     <!-- CDN Scripts -->
-    <script src="https://kit.fontawesome.com/336014f0fa.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/336014f0fa.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Local Scripts -->
     <script src="/util/modalLogin.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button id="collapsedButton" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar colored"></span>
-                    <span class="icon-bar colored"></span>
-                    <span class="icon-bar colored"></span>
-                </button>
-                <!-- Navbar Brand and Logo -->
-                <a id="special" class="navbar-brand hidden-xs" href="/campgrounds">キャンプ三井</a>
-                <a id="navbarIcon" class="navbar-brand" href="/campgrounds">
-                    <img alt="Brand" src="/assets/brand.png" width="30px" height="30px">
-                </a>
-            </div>
-
-            <!-- Sign In and Create Account Buttons -->
-            <% if(!currentUser){ %>
-            <div class="collapse navbar-collapse main-nav" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right pull-right">
-                    <li> <a><button class="cd-signin btn pull-right ">Sign In</button> </a></li>
-                    <li> <a><button class="cd-signup btn btn-success pull-right">Join Free</button> </a></li>
-                </ul>
-            </div>
-            <% } else{ %>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right pull-right">
-                    <li><a class="hidden-xs" id="signedIn" href=""> <em>Signed In As
-                            </em><%= currentUser.username %></a></li>
-                    <li> <a href="/logout"><button class="btn btn-info">Log Out</button> </a></li>
-                </ul>
-            </div>
-            <% } %>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            id="collapsedButton"
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar colored"></span>
+            <span class="icon-bar colored"></span>
+            <span class="icon-bar colored"></span>
+          </button>
+          <!-- Navbar Brand and Logo -->
+          <a id="special" class="navbar-brand hidden-xs" href="/campgrounds"
+            >キャンプ三井</a
+          >
+          <a id="navbarIcon" class="navbar-brand" href="/campgrounds">
+            <img
+              alt="Brand"
+              src="/assets/brand.png"
+              width="30px"
+              height="30px"
+            />
+          </a>
         </div>
+
+        <!-- Sign In and Create Account Buttons -->
+        <% if(!currentUser){ %>
+        <div
+          class="collapse navbar-collapse main-nav"
+          id="bs-example-navbar-collapse-1"
+        >
+          <ul class="nav navbar-nav navbar-right pull-right">
+            <li>
+              <a><button class="cd-signin btn pull-right ">Sign In</button> </a>
+            </li>
+            <li>
+              <a
+                ><button class="cd-signup btn btn-success pull-right">
+                  Join Free
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <% } else{ %>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right pull-right">
+            <li>
+              <a class="hidden-xs" id="signedIn" href="">
+                <em>Signed In As </em><%= currentUser.username %></a
+              >
+            </li>
+            <li>
+              <a href="/logout"
+                ><button class="btn btn-info">Log Out</button>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <% } %>
+      </div>
     </nav>
 
     <!-- Success and Error warnings -->
     <div class="container">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } else if(success && success.length > 0) {%>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
+      <% if(error && error.length > 0){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% } else if(success && success.length > 0) {%>
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+      <% } %>
     </div>
 
     <!-- Modal Login and Signup Forms -->
     <div class="cd-user-modal">
-        <div class="cd-user-modal-container">
-            <ul class="cd-switcher">
-                <li><a href="#0">Sign in</a></li>
-                <li><a href="#0">New account</a></li>
-            </ul>
+      <div class="cd-user-modal-container">
+        <ul class="cd-switcher">
+          <li><a href="#0">Sign in</a></li>
+          <li><a href="#0">New account</a></li>
+        </ul>
 
-            <!-- Login Form -->
-            <div id="cd-login">
-                <form class="cd-form" action="/login" method="post">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signin-email">User Name</label>
-                        <input class="full-width has-padding has-border" name="username" id="signin-email" type="text"
-                            placeholder="Username">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signin-password" type="password"
-                            placeholder="Password" name="password">
-                        <a href="#0" class="hide-password">Show</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-                    <button class="btn btn-lg btn-info btn-block">Login</button>
-                </form>
-                <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-            </div>
-
-            <!-- Sign Up Form -->
-            <div id="cd-signup">
-                <form class="cd-form" action="/register" method="post">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <input class="full-width has-padding has-border" name="username" id="signup-username"
-                            type="text" placeholder="Username">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" name="password" type="password"
-                            id="signup-password" placeholder="Password">
-                        <a href="#0" class="hide-password">Show</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-                    <p class="fieldset">
-                        <button class="btn btn-lg btn-info btn-block">Sign Up!</button>
-                    </p>
-                </form>
-            </div>
-
-            <!-- Reset Password Form-->
-            <div id="cd-reset-password">
-                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link
-                    to
-                    create a new password.</p>
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email"
-                            placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Reset password">
-                    </p>
-                </form>
-                <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-            </div>
-            <a href="#0" class="cd-close-form">Close</a>
+        <!-- Login Form -->
+        <div id="cd-login">
+          <form class="cd-form" action="/login" method="post">
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="signin-email"
+                >User Name</label
+              >
+              <input
+                class="full-width has-padding has-border"
+                name="username"
+                id="signin-email"
+                type="text"
+                placeholder="Username"
+              />
+              <span class="cd-error-message">Error message here!</span>
+            </p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signin-password"
+                >Password</label
+              >
+              <input
+                class="full-width has-padding has-border"
+                id="signin-password"
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
+              <a href="#0" class="hide-password">Show</a>
+              <span class="cd-error-message">Error message here!</span>
+            </p>
+            <button class="btn btn-lg btn-info btn-block">Login</button>
+          </form>
+          <p class="cd-form-bottom-message">
+            <a href="#0">Forgot your password?</a>
+          </p>
         </div>
+
+        <!-- Sign Up Form -->
+        <div id="cd-signup">
+          <form class="cd-form" action="/register" method="post">
+            <p class="fieldset">
+              <label class="image-replace cd-username" for="signup-username"
+                >Username</label
+              >
+              <input
+                class="full-width has-padding has-border"
+                name="username"
+                id="signup-username"
+                type="text"
+                placeholder="Username"
+              />
+              <span class="cd-error-message">Error message here!</span>
+            </p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-password"
+                >Password</label
+              >
+              <input
+                class="full-width has-padding has-border"
+                name="password"
+                type="password"
+                id="signup-password"
+                placeholder="Password"
+              />
+              <a href="#0" class="hide-password">Show</a>
+              <span class="cd-error-message">Error message here!</span>
+            </p>
+            <p class="fieldset">
+              <button class="btn btn-lg btn-info btn-block">Sign Up!</button>
+            </p>
+          </form>
+        </div>
+
+        <!-- Reset Password Form-->
+        <div id="cd-reset-password">
+          <p class="cd-form-message">
+            Lost your password? Please enter your email address. You will
+            receive a link to create a new password.
+          </p>
+          <form class="cd-form">
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="reset-email"
+                >E-mail</label
+              >
+              <input
+                class="full-width has-padding has-border"
+                id="reset-email"
+                type="email"
+                placeholder="E-mail"
+              />
+              <span class="cd-error-message">Error message here!</span>
+            </p>
+            <p class="fieldset">
+              <input
+                class="full-width has-padding"
+                type="submit"
+                value="Reset password"
+              />
+            </p>
+          </form>
+          <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+        </div>
+        <a href="#0" class="cd-close-form">Close</a>
+      </div>
     </div>
 
     <!-- Start Container class for other classes inheriting Header.ejs -->
-    <div class="container">
+    <div class="container"></div>
+  </body>
+</html>
