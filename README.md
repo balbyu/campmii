@@ -1,29 +1,34 @@
 # Campmii   <img src="https://www.shareicon.net/data/128x128/2016/04/24/754751_nature_512x512.png" width="30"> 
-Campmii is a website to share and comment on your favorite campgrounds. It's the final code-along project in the Udemy Web Developer Bootcamp (called YelpCamp), and as such is lacking many features that I think could make this actually useful. Therefore I decided to continue developing this into something that I was proud of enough to share.
+Campmii is an application to share and explore campgrounds around the world. It's based off of the final code-along project in the Udemy Web Developer Bootcamp called YelpCamp. There were only so many features Colt could cram into a cheap bootcamp, so I decided to take over where he left off with YelpCamp and make it something of my own. 
+
+In hindsight, this project is poorly structured, prone to bugs, and utilizes outdated technologies. But only so much can be expected from bootcamps that must develop ever-changing content.
 
 Enjoy!
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. There will be no access to the DB, so you will have to figure out how to actually store the data. See deployment for notes on how to deploy the project on a live system.
+You should only bother cloning and setting up this project if you have a MongoDB installed locally. I should have probably just put this in a docker image, but I didn't know about doing that when I first completed the project in 2019. 
 
 ### Installing
 
-Clone this git repo, install NPM and run: 
+Clone this git repo and install all dependencies:
 
 ```
 npm install
 ```
 
-## Deployment
+### Running
 
-Campmii is currently being hosted on Heroku and MongoAtlas, but you can still clone and modify it in your local environment. There will be errors when you run because the `.env` file is not included in this public repo. Create your own local MongoDB and make the change to the connection string.
-
-Then run the following in the root folder:
+Run the local node process. Since there are no default environment variables included in this repo, it should look for a local MongoDB database. This should already be running on `mongodb://localhost/camp-mii` prior to executing the following:
 
 ```
 node app.js
 ```
+
+## Deployment
+
+Campmii is currently being hosted on Heroku with a custom domain name and the database is using MongoAtlas, a cloud-based database service. but you can still clone and modify it in your local environment.
+
 
 ## Built With
 
