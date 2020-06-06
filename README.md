@@ -10,7 +10,7 @@ Enjoy!
 
 ## Getting Started
 
-You should only bother cloning and setting up this project if you have the patience to install MongoDB and setup a database. Visit [the website](campmii.com) for the easy solution to viewing the end-product.
+You should only bother cloning and setting up this project if you have the patience to install MongoDB and setup a database. Visit http://www.campmii.com for the easy solution to viewing the end-product.
 
 ### Installing
 
